@@ -40,7 +40,7 @@ function Room({ room }) {
             {room.imageurls.map((url) => {
               return (
                 <Carousel.Item>
-                  <img className="d-block w-100 bigimg" src={url} />
+                  <img className="d-block w-100 bigimg" src={url} alt="" />
                 </Carousel.Item>
               );
             })}

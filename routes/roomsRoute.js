@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const Room = require("../models/booking");
+const Room = require("../models/rooms");
 
 router.get("/getallroombyid", async (req, res) => {
   try {
