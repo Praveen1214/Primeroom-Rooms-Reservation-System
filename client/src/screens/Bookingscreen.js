@@ -1,64 +1,80 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
+import Loader from "../components/Loader";
+import Error from "../components/Error";
 
-function Bookingscreen({ match }) {
-  const [rooms, setRooms] = useState();
-  const [loading, setLoading] = useState(true); // Initialize as false
-  const [error, setError] = useState();
-  let params = useParams();
+const BookingScreen = () => {
+  const [loading, setloading] = useState(true);
+  const [error, seterror] = useState();
+  const [room, setroom] = useState();
+
+  const { roomid } = useParams();
+
+  const fetchData = async () => {
+    try {
+      setloading(true);
+      const data = (
+        await axios.post("/api/rooms/getroombyid", { roomid: roomid })
+      ).data;
+      setroom(data);
+      setloading(false);
+    } catch (error) {
+      seterror(true);
+      setloading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const response = (
-          await axios.post("/api/rooms/getroombyid", { roomid: params.roomid })
-        ).data;
-        const data = response.data;
-        setRooms(data.rooms);
-      } catch (error) {
-        setError(true);
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchData();
-  }, []); // Include roomid in the dependency array
+  }, []);
 
   return (
-    <div>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error fetching data</p>}
-      {!loading && !error && (
-        <div className="row">
-          {rooms.map((room) => (
-            <div key={room._id} className="col-md-5">
+    <div className="m-5">
+      {loading ? (
+        <h1>
+          <Loader />
+        </h1>
+      ) : room ? (
+        <div>
+          <div className="row justify-content-center mt-5 bs">
+            <div className="col-md-6">
               <h1>{room.name}</h1>
-              <img src={room.imageurls[0]} className="bigimg" alt={room.name} />
+              <img src={room.imageurls[0]} className="bigimg" alt="Room" />
             </div>
-          ))}
-          <div className="col-md-5">
-            <h1>Booking Details</h1>
-            <hr />
+            <div className="col-md-6">
+              <div style={{ textAlign: "right" }}>
+                <h1>Booking Details</h1>
+                <hr />
 
-            {/* Displaying details for each room */}
-            {rooms.map((room) => (
-              <div key={room._id}>
-                <p>Name: {room.name}</p>
-                <p>From Date: {/* Add from date logic here */}</p>
-                <p>To Date: {/* Add to date logic here */}</p>
-                <p>Max Count: {room.maxcount}</p>
-                {/* Add other details as needed */}
+                <b>
+                  <p>Name : </p>
+                  <p>From Date : </p>
+                  <p>To Date : </p>
+                  <p>Max Count : {room.maxcount}</p>
+                </b>
               </div>
-            ))}
+              <div style={{ textAlign: "right" }}>
+                <h1>Amount</h1>
+                <hr />
+
+                <b>
+                  <p>Total days : </p>
+                  <p>Rent per day : {room.rentperday}</p>
+                  <p>Total Amount : </p>
+                </b>
+              </div>
+              <div style={{ float: "right" }}>
+                <button className="btn btn-primary">Pay Now</button>
+              </div>
+            </div>
           </div>
         </div>
+      ) : (
+        <Error />
       )}
     </div>
   );
-}
+};
 
-export default Bookingscreen;
+export default BookingScreen;

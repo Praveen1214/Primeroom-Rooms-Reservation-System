@@ -12,7 +12,7 @@ function App() {
       <Navbar />
       <BrowserRouter>
         <Routes>
-          <Route path="/home" element={<Homescreen />} />
+          <Route path="/home" element={<Bookingscreen />} />
           <Route path="/book" element={<Bookingscreen />} />
         </Routes>
       </BrowserRouter>

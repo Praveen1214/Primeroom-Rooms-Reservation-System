@@ -4,8 +4,8 @@ import Room from "../components/Room";
 
 function Homescreen() {
   const [rooms, setRooms] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState();
+  const [error, setError] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,10 +14,10 @@ function Homescreen() {
         const response = await axios.get("/api/rooms/getallrooms");
         const data = response.data;
         setRooms(data.rooms);
+        setLoading(false);
       } catch (error) {
         setError(true);
         console.error("Error fetching data:", error);
-      } finally {
         setLoading(false);
       }
     };
