@@ -1,5 +1,5 @@
 import React, { useState, CSSProperties } from "react";
-import HashLoader from "react-spinners/HashLoader";
+import BeatLoader from "react-spinners/BeatLoader";
 
 const Loader = () => {
   let [loading, setLoading] = useState(true);
@@ -8,11 +8,11 @@ const Loader = () => {
     <div style={{ marginTop: "150px" }}>
       <center>
         <div className="sweet-loading">
-          <HashLoader
+          <BeatLoader
             color="#000"
             loading={loading}
             cssOverride=""
-            size={80}
+            size={20}
             aria-label="Loading Spinner"
             data-testid="loader"
           />
