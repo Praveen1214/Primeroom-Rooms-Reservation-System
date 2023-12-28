@@ -26,7 +26,9 @@ function Room({ room }) {
         </b>
       </div>
 
-      <div style={{ float: "right" }}>
+      <div
+        style={{ display: "flex", justifyContent: "flex-end", float: "right" }}
+      >
         <Link to={`/book/${room._id}`}>
           <button className="btn btn-primary m-2">Book Now</button>
         </Link>

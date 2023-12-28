@@ -41,7 +41,7 @@ h1{
   font-size: 15px;
   background-color: black;
   box-shadow: none;
-  float: right !important;
+  margin-right: 100px;
 }
 
 .bs{
@@ -55,4 +55,7 @@ h1{
   height: 500px;
   width: 100%;
   border-radius: 5px;
+}
+.btnbtn{
+  float: right;
 }

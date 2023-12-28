@@ -14,7 +14,7 @@ body {
     border-radius: 8px;
   }
   
-  h1 {
+  .h1reg {
     text-align: center;
     font-weight: bold;
   }
@@ -30,8 +30,8 @@ body {
     margin: 5px 0 20px;
     box-sizing: border-box;
   }
-  
-  button {
+
+.btnreg  {
     background-color: #000000;
     color: white;
     padding: 10px 15px;
@@ -45,8 +45,9 @@ body {
     background-color: #000000;
   }
   
-  p {
+  .preg{
     text-align: center;
+    font-weight: 100;
   }
   
   a {

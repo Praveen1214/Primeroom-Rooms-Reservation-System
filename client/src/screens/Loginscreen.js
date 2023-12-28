@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from "react";
 import "./registerform.css";
+import axios from "axios";
 
 function Loginscreen() {
   const [email, setemail] = useState("");
 
   const [password, setpassword] = useState("");
 
-  function Register() {
+  async function Login() {
     const user = {
       email,
       password,
     };
-    console.log(user);
-
-    alert("password not match");
+    try {
+      const results = await axios.post("/api/users/login", user);
+    } catch (error) {
+      console.error("Registration error:", error);
+    }
   }
 
   return (
     <div>
       <form>
         <div class="container">
-          <h1 id="h1">Login</h1>
-          <p>Kindly fill Enter Your Details.</p>
+          <h1 className="h1reg">Login</h1>
+          <p className="preg">Kindly fill Enter Your Details.</p>
 
           <label for="email">
             <b>Email</b>
@@ -52,7 +55,7 @@ function Loginscreen() {
             }}
           />
 
-          <button type="submit" onClick={Register}>
+          <button className="btnreg" type="submit" onClick={Login}>
             Login
           </button>
         </div>
