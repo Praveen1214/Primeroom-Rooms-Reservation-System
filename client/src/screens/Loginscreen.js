@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./registerform.css";
 import axios from "axios";
+import Loader from "../components/Loader";
+import Error from "../components/Error";
+import Sucess from "../components/Sucess";
 
 function Loginscreen() {
   const [email, setemail] = useState("");
-
   const [password, setpassword] = useState("");
+  const [loading, setLoading] = useState();
+  const [error, setError] = useState();
 
   async function Login() {
     const user = {
@@ -13,15 +17,30 @@ function Loginscreen() {
       password,
     };
     try {
+      setLoading(true);
       const results = await axios.post("/api/users/login", user);
+      setLoading(false);
+
+      localStorage.setItem("currentUser", JSON.stringify(results));
+      window.location = "/home";
     } catch (error) {
-      console.error("Registration error:", error);
+      setLoading(false);
+      console.error("Login error:", error);
+      setError(true);
     }
   }
 
   return (
     <div>
-      <form>
+      {loading && <Loader />}
+      {error && <Error />}
+
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          Login();
+        }}
+      >
         <div class="container">
           <h1 className="h1reg">Login</h1>
           <p className="preg">Kindly fill Enter Your Details.</p>
