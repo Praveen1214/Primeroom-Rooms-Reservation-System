@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./registerform.css";
 import axios from "axios";
+import Loader from "../components/Loader";
+import Error from "../components/Error";
+import Sucess from "../components/Sucess";
 
 function Registerscreen() {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [cpassword, setcpassword] = useState("");
+  const [success, setsucess] = useState();
+  const [loading, setLoading] = useState();
+  const [error, setError] = useState();
 
   async function Register() {
     if (password === cpassword) {
@@ -17,10 +23,19 @@ function Registerscreen() {
       };
 
       try {
-        const response = await axios.post("/api/users/register", user);
-        console.log("Registration successful:", response.data);
+        setLoading(true);
+        const result = await axios.post("/api/users/register", user);
+
+        setLoading(false);
+        setsucess(true);
+
+        setname("");
+        setemail("");
+        setpassword("");
+        setcpassword("");
       } catch (error) {
-        console.error("Registration error:", error);
+        setLoading(false);
+        setError(true);
       }
     } else {
       alert("Passwords do not match");
@@ -29,8 +44,12 @@ function Registerscreen() {
 
   return (
     <div>
+      {loading && <Loader />}
+      {error && <Error />}
+
       <form>
         <div class="container">
+          {success && <Sucess message="Registation Success" />}
           <h1 className="h1reg">Register</h1>
           <p className="preg">Kindly fill in this form to register.</p>
           <label for="username">

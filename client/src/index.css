@@ -16,28 +16,49 @@ code {
 
 .navbar-expand-lg {
   background-color: rgb(0, 0, 0);
+  height: 80px;
 }
 .nav-link{
   color: aliceblue;
 }
- 
-.navbar-brand{
-  color: aliceblue;
+
+.navbar-nav {
+  margin-left: auto !important;
+  font-size: 18px !important;
 }
 
-.smallimg{
-  height:200px;
-  width:100%!important ;
+.navbar {
+  background-color: black !important;
+  padding: 15px !important;
+}
+
+.navbar-brand {
+  color: white !important;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  transform: scale(1) !important;
+  transition: transform 0.2s !important;
+}
+
+
+.smallimg {
+  height: 200px;
+  width: 100% !important;
   border-radius: 5px !important;
-  padding: 5px;
 }
 
-h1{
+h1 {
+  font-weight: 60;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 20px !important;
 }
  
 .btn{
-  margin-top: 150px;
+  margin-top: 10px;
   font-size: 15px;
   background-color: black;
   box-shadow: none;
@@ -58,4 +79,31 @@ h1{
 }
 .btnbtn{
   float: right;
+}
+
+.navbar-nav{
+  margin-left: auto!important;
+}
+
+.dropdown-item:hover{
+  color: #000000 !important;
+}
+
+.bigh{
+  font-size: 30px !important;
+  padding: 10px;
+  font-weight: bold !important;
+  text-align: center !important;
+}
+
+.dropdown-menu{
+  background: rgb(255, 255, 255) !important;
+}
+
+.dropdown-toggle{
+  border: 0px solid black !important;
+}
+
+.dropdown{
+  margin-right: 100px !important;
 }
