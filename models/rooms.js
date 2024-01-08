@@ -23,12 +23,12 @@ const roomSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    description: {  // Fixed the typo in 'description'
+    description: {  
         type: String,
         required: true,
     },
 }, {
-    timestamps: true,  // Corrected the option name to 'timestamps'
+    timestamps: true,  
 });
 
 const roomModel = mongoose.model('rooms', roomSchema);

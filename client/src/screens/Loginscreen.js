@@ -1,51 +1,76 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./registerform.css";
 import axios from "axios";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
-import Sucess from "../components/Sucess";
 
 function Loginscreen() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-  const [loading, setLoading] = useState();
-  const [error, setError] = useState();
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  async function Login() {
-    const user = {
-      email,
-      password,
-    };
-    try {
-      setLoading(true);
-      const results = await axios.post("/api/users/login", user);
-      setLoading(false);
+  const navigate = useNavigate();
 
-      localStorage.setItem("currentUser", JSON.stringify(results));
-      window.location = "/home";
-    } catch (error) {
-      setLoading(false);
-      console.error("Login error:", error);
-      setError(true);
+  const validateForm = () => {
+    let isValid = true;
+
+    if (!email) {
+      setEmailError("Email is required");
+      isValid = false;
+    } else {
+      setEmailError("");
     }
-  }
+
+    if (!password) {
+      setPasswordError("Password is required");
+      isValid = false;
+    } else {
+      setPasswordError("");
+    }
+
+    return isValid;
+  };
+
+  const handleLogin = async () => {
+    if (validateForm()) {
+      const user = {
+        email,
+        password,
+      };
+      try {
+        setLoading(true);
+        const response = await axios.post("/api/users/login", user);
+        setLoading(false);
+
+        const userData = response.data;
+
+        localStorage.setItem("currentUser", JSON.stringify(userData));
+
+        // Redirect to the home page
+        navigate("/home");
+      } catch (error) {
+        setLoading(false);
+        console.error("Login error:", error);
+        setError(true);
+      }
+    }
+  };
 
   return (
     <div>
       {loading && <Loader />}
-      {error && <Error />}
+      {error && <Error message={"Invalid Credential"} />}
 
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          Login();
-        }}
-      >
-        <div class="container">
+      <form onSubmit={(e) => e.preventDefault()}>
+        <div className="container">
           <h1 className="h1reg">Login</h1>
           <p className="preg">Kindly fill Enter Your Details.</p>
 
-          <label for="email">
+          <label htmlFor="email">
             <b>Email</b>
           </label>
           <input
@@ -58,8 +83,9 @@ function Loginscreen() {
               setemail(e.target.value);
             }}
           />
+          {emailError && <div>{emailError}</div>}
 
-          <label for="pwd">
+          <label htmlFor="pwd">
             <b>Password</b>
           </label>
           <input
@@ -73,13 +99,12 @@ function Loginscreen() {
               setpassword(e.target.value);
             }}
           />
+          {passwordError && <div>{passwordError}</div>}
 
-          <button className="btnreg" type="submit" onClick={Login}>
+          <button className="btnreg" type="submit" onClick={handleLogin}>
             Login
           </button>
         </div>
-
-        <div></div>
       </form>
     </div>
   );

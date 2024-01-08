@@ -24,7 +24,7 @@ function Registerscreen() {
 
       try {
         setLoading(true);
-        const results = await axios.post("/api/users/register", user);
+        const result = await axios.post("/api/users/register", user);
 
         setLoading(false);
         setsucess(true);
@@ -46,10 +46,10 @@ function Registerscreen() {
     <div>
       {loading && <Loader />}
       {error && <Error />}
-      {success && <Sucess message="Registation Success" />}
 
       <form>
         <div class="container">
+          {success && <Sucess message="Registation Success" />}
           <h1 className="h1reg">Register</h1>
           <p className="preg">Kindly fill in this form to register.</p>
           <label for="username">
