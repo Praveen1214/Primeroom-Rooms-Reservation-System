@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button, Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function Room({ room }) {
+function Room({ room, fromdate, todate }) {
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
@@ -29,9 +29,10 @@ function Room({ room }) {
       <div
         style={{ display: "flex", justifyContent: "flex-end", float: "right" }}
       >
-        <Link to={`/book/${room._id}`}>
+        <Link to={`/book/${room._id}/${fromdate || ""}/${todate || ""}`}>
           <button className="btn btn-primary m-2">Book Now</button>
         </Link>
+
         <button className="btn btn-primary m-2" onClick={handleShow}>
           View Details
         </button>
@@ -43,17 +44,15 @@ function Room({ room }) {
         </Modal.Header>
         <Modal.Body>
           <Carousel>
-            {room.imageurls.map((url) => {
-              return (
-                <Carousel.Item>
-                  <img className="d-block w-100 bigimg" src={url} alt="" />
-                </Carousel.Item>
-              );
-            })}
+            {room.imageurls.map((url, index) => (
+              <Carousel.Item key={index}>
+                <img className="d-block w-100 bigimg" src={url} alt="" />
+              </Carousel.Item>
+            ))}
           </Carousel>
-
           <p>{room.description}</p>
         </Modal.Body>
+
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

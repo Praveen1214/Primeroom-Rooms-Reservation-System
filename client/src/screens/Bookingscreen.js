@@ -3,11 +3,17 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import moment from "moment";
+import { duration } from "moment";
 
-const BookingScreen = () => {
+const BookingScreen = ({ match }) => {
   const [loading, setloading] = useState(true);
   const [error, seterror] = useState();
   const [room, setroom] = useState();
+  let params = useParams();
+
+  let fromdate = moment(params.fromdate, "DD-MM-YYYY");
+  let todate = moment(params.todate, "DD-MM-YYYY");
 
   const { roomid } = useParams();
 
@@ -49,8 +55,8 @@ const BookingScreen = () => {
 
                 <b>
                   <p>Name : </p>
-                  <p>From Date : </p>
-                  <p>To Date : </p>
+                  <p>From Date : {params.fromdate}</p>
+                  <p>To Date :{params.todate} </p>
                   <p>Max Count : {room.maxcount}</p>
                 </b>
               </div>
