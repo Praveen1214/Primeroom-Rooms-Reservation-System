@@ -35,10 +35,11 @@ function Homescreen() {
 
   function filterByDate(dates) {
     if (dates && dates.length === 2) {
-      setfromdate(moment(dates[0]).format("DD-MM-YYYY"));
-      settodate(moment(dates[1]).format("DD-MM-YYYY"));
+      const dateFrom = new Date(dates[0]);
+      const dateTo = new Date(dates[1]);
+      setfromdate(moment(dateFrom).format("DD-MM-YYYY"));
+      settodate(moment(dateTo).format("DD-MM-YYYY"));
     } else {
-      // Handle the case when the user clears the date range
       setfromdate(null);
       settodate(null);
     }
