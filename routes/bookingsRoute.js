@@ -5,17 +5,7 @@ const moment = require("moment");
 const Room = require("../models/rooms");
 
 router.post("/bookroom", async (req, res) => {
-  const {
-    room,
-    roomid,
-    userid,
-    fromdate,
-    todate,
-    totalamount,
-    totaldays,
-    transactionId,
-    status,
-  } = req.body;
+  const { room, userid, fromdate, todate, totalamount, totaldays } = req.body;
 
   try {
     const newbooking = new Booking({
@@ -32,13 +22,14 @@ router.post("/bookroom", async (req, res) => {
 
     const booking = await newbooking.save();
 
-    const rootemp = await Room.findById(roomid);
+    const roomtemp = await Room.findById((_id = room._id));
+    console.log(roomtemp);
 
     roomtemp.currentbookings.push({
       bookingid: booking._id,
       fromdate,
       todate,
-      userid,
+      userid: userid,
       status: booking.status,
     });
 

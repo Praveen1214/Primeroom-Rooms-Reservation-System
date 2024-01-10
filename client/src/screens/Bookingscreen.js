@@ -40,26 +40,21 @@ const BookingScreen = ({ match }) => {
   async function bookRoom() {
     const bookingDetails = {
       room,
-      roomid,
+      roomid: room._id,
       userid: JSON.parse(localStorage.getItem("currentUser"))._id,
-      fromdate: moment(fromdate).format("DD-MM-YYYY"),
-      todate: moment(todate).format("DD-MM-YYYY"),
-      totalamount,
+      fromdate: params.fromdate,
+      todate: params.todate,
+      totalamount: totaldays * room.rentperday,
       totaldays,
-      transactionId: "abc123",
-      status: "booked",
     };
 
     try {
       setloading(true);
-      const result = await axios.post("/api/bookings/bookroom", bookingDetails);
+      await axios.post("/api/bookings/bookroom", bookingDetails);
       setloading(false);
-      alert("Room Booked Successfully");
-      window.location.href = "/bookings";
     } catch (error) {
-      console.log(error);
+      seterror(true);
       setloading(false);
-      alert("Something went wrong");
     }
   }
 
