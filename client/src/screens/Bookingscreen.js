@@ -4,6 +4,8 @@ import axios from "axios";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import moment from "moment";
+import StripeCheckout from "react-stripe-checkout";
+import Swal from "sweetalert2";
 
 const BookingScreen = ({ match }) => {
   const [loading, setloading] = useState(true);
@@ -37,7 +39,8 @@ const BookingScreen = ({ match }) => {
     fetchData();
   }, []);
 
-  async function bookRoom() {
+  async function onToken(token) {
+    console.log(token);
     const bookingDetails = {
       room,
       roomid: room._id,
@@ -46,15 +49,23 @@ const BookingScreen = ({ match }) => {
       todate: params.todate,
       totalamount: totaldays * room.rentperday,
       totaldays,
+      token,
     };
 
     try {
       setloading(true);
-      await axios.post("/api/bookings/bookroom", bookingDetails);
+      const result = await axios.post("/api/bookings/bookroom", bookingDetails);
       setloading(false);
+      Swal.fire(
+        "Congratulations!",
+        "Your Room Booked Successfully",
+        "success"
+      ).then((result) => {
+        window.location.href = "/profile";
+      });
     } catch (error) {
-      seterror(true);
       setloading(false);
+      Swal.fire("Oops!", "Something Went wrong", "error");
     }
   }
 
@@ -94,9 +105,13 @@ const BookingScreen = ({ match }) => {
                 </b>
               </div>
               <div style={{ float: "right" }}>
-                <button className="btn btn-primary" onClick={bookRoom}>
-                  Pay Now
-                </button>
+                <StripeCheckout
+                  amount={totalamount * 100}
+                  token={onToken}
+                  stripeKey="pk_test_51OXkFEKKVI3hDMQU3VFizd8BbkI7U3NrvAYv52CX5O7sj0S8FeMcaupll4Nyf67wWCzZfg8GvGovEkiSPLhxJQp500IDRjdPFB"
+                >
+                  <button className="btn btn-primary">Pay Now</button>
+                </StripeCheckout>
               </div>
             </div>
           </div>
