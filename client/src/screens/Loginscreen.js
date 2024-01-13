@@ -63,9 +63,9 @@ function Loginscreen() {
   return (
     <div>
       {loading && <Loader />}
-      {error && <Error message={"Invalid Credential"} />}
 
       <form onSubmit={(e) => e.preventDefault()}>
+        {error && <Error message={"Invalid Credential"} />}
         <div className="container">
           <h1 className="h1reg">Login</h1>
           <p className="preg">Kindly fill Enter Your Details.</p>
