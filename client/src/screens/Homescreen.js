@@ -18,22 +18,24 @@ function Homescreen() {
   const [todate, settodate] = useState();
   const [duplicaterooms, setduplicaterooms] = useState([]);
 
+  const [searchkey, setsearchkey] = useState("");
+  const [type, settype] = useState("all");
+
   useEffect(() => {
-    const fetchData = async () => {
+    (async () => {
       try {
         setLoading(true);
-        const response = await axios.get("/api/rooms/getallrooms");
-        const data = response.data;
+        const data = (await axios.get("/api/rooms/getallrooms")).data;
+
         setRooms(data.rooms);
+        setduplicaterooms(data.rooms);
         setLoading(false);
       } catch (error) {
         setError(true);
-        console.error("Error fetching data:", error);
+        console.log(error);
         setLoading(false);
       }
-    };
-
-    fetchData();
+    })();
   }, []);
 
   function filterByDate(dates) {
@@ -77,35 +79,92 @@ function Homescreen() {
     }
   }
 
+  function filterBySearch() {
+    const temprooms = duplicaterooms.filter((room) =>
+      room.name.toLowerCase().includes(searchkey.toLowerCase())
+    );
+
+    setRooms(temprooms);
+  }
+
+  function filterByType(e) {
+    settype(e);
+    if (e !== "all") {
+      const tempRooms = duplicaterooms.filter(
+        (room) => room.type.toLowerCase() == e.toLowerCase()
+      );
+
+      setRooms(tempRooms);
+    } else setRooms(duplicaterooms);
+  }
+  function clearRange() {
+    window.location.assign("/home");
+  }
+
   return (
     <div className="container">
-      <div className="row mt-5">
+      <div className="row mt-5 d-flex align-items-center bs">
         <div className="col-md-3">
-          <RangePicker format="DD-MM-YYYY" onChange={filterByDate} />
+          <RangePicker
+            format="DD-MM-YYYY"
+            onChange={filterByDate}
+            onCalendarChange={(dates) => (!dates ? clearRange() : null)}
+          />
+        </div>
+        <div className="col-md-5">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search Rooms"
+            value={searchkey}
+            onChange={(e) => {
+              setsearchkey(e.target.value);
+            }}
+            onKeyUp={filterBySearch}
+          />
+        </div>
+
+        <div className="col-md-4">
+          <select
+            className="form-control"
+            value={type}
+            onChange={(e) => {
+              filterByType(e.target.value);
+            }}
+          >
+            <option value="all" className="formho">
+              All
+            </option>
+            <option value="delux" className="formho">
+              {" "}
+              Delux
+            </option>
+            <option value="non-delux" className="formho">
+              Non-Delux
+            </option>
+          </select>
         </div>
       </div>
+
       <div className="row justify-content-center mt-5">
-        {loading && (
-          <p>
-            <Loader />
-          </p>
-        )}
-        {!loading && !error && (
-          <div>
-            {rooms.map((room) => (
-              <div className="col-md-10 mt-3" key={room.id}>
+        {loading ? (
+          <Loader />
+        ) : (
+          rooms.map((room) => {
+            return (
+              <div
+                className="col-md-9 mt-2"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+              >
                 <Room room={room} fromdate={fromdate} todate={todate} />
               </div>
-            ))}
-          </div>
-        )}
-        {error && (
-          <p>
-            <Error />
-          </p>
+            );
+          })
         )}
       </div>
     </div>
   );
 }
+
 export default Homescreen;
