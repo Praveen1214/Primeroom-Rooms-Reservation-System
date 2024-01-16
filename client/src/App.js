@@ -8,6 +8,8 @@ import Loginscreen from "./screens/Loginscreen";
 
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Profilescreen from "./screens/Profilescreen";
+import Adminscreen from "./screens/Adminscreen";
+import Landingscreen from "./screens/Landingscreen";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/register" element={<Registerscreen />} />
           <Route path="/login" element={<Loginscreen />} />
           <Route path="/profile" element={<Profilescreen />} />
+          <Route path="/admin" element={<Adminscreen />} />
+          <Route path="/" element={<Landingscreen />} />
         </Routes>
       </BrowserRouter>
     </div>

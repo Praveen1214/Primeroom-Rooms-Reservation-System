@@ -11,7 +11,7 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid d-flex justify-content-between">
           <a className="navbar-brand" href="/home">
-            Home
+            PrimeRooms
           </a>
 
           <button
