@@ -34,12 +34,12 @@ code {
 
 .navbar-brand {
   color: white !important;
-  font-size: 30px;
+  font-size: 20px;
   margin: 0;
   padding: 0;
   line-height: 0;
   font-weight: 700;
-  text-transform: uppercase;
+  letter-spacing: 0.5px;
   transform: scale(1) !important;
   transition: transform 0.2s !important;
 }
@@ -63,6 +63,9 @@ h1 {
   background-color: black;
   box-shadow: none;
   margin-right: 100px;
+
+  
+
 }
 
 .bs{
@@ -107,3 +110,19 @@ h1 {
 .dropdown{
   margin-right: 100px !important;
 }
+
+.input ,select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.landing{
+
+  background-color: #000000;
+  height: 100vh;
+  width: 100%;
+  padding-top: 200px;
+}
+

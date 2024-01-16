@@ -65,4 +65,57 @@ router.post("/bookroom", async (req, res) => {
   }
 });
 
+router.post("/getbookingsbyuserid", async (req, res) => {
+  const userid = req.body.userid;
+
+  try {
+    const bookings = await Booking.find({ userid: userid });
+    res.send(bookings);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
+
+router.post("/cancelbooking", async (req, res) => {
+  const { bookingid, roomid } = req.body;
+
+  try {
+    const booking = await Booking.findOne({ _id: bookingid });
+    booking.status = "cancelled";
+    await booking.save();
+
+    const room = await Room.findOne({ _id: roomid });
+
+    const currentbookings = room.currentbookings.filter(
+      (booking) => booking.bookingid.toString() !== bookingid.toString()
+    );
+
+    room.currentbookings = currentbookings;
+
+    await room.save();
+
+    res.send("Booking Cancelled Successfully");
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
+
+router.get("/getallbookings", async (req, res) => {
+  try {
+    const bookings = await Booking.find({});
+    res.send(bookings);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
+
+router.get("/getallbookings", async (req, res) => {
+  try {
+    const bookings = await Booking.find({});
+    res.send(bookings);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
+
 module.exports = router;

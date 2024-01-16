@@ -21,12 +21,20 @@ const BookingScreen = ({ match }) => {
   const [totalamount, settotalamount] = useState();
 
   const fetchData = async () => {
+    if (!localStorage.getItem("currentUser")) {
+      window.location.href = "/login";
+      return;
+    }
+
     try {
       setloading(true);
+
       const data = (
         await axios.post("/api/rooms/getroombyid", { roomid: roomid })
       ).data;
+
       settotalamount(data.rentperday * totaldays);
+
       setroom(data);
       setloading(false);
     } catch (error) {
