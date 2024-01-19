@@ -26,16 +26,14 @@ function Room({ room, fromdate, todate }) {
         </b>
       </div>
 
-      <div
-        style={{ display: "flex", justifyContent: "flex-end", float: "right" }}
-      >
+      <div class="btn-group">
         {fromdate && todate && (
           <Link to={`/book/${room._id}/${fromdate || ""}/${todate || ""}`}>
-            <button className="btn btn-primary m-2">Book Now</button>
+            <button className="btn btn-primary m-2 ">Book Now</button>
           </Link>
         )}
 
-        <button className="btn btn-primary m-2" onClick={handleShow}>
+        <button className=" btn btn-primary m-2 btn1" onClick={handleShow}>
           View Details
         </button>
       </div>

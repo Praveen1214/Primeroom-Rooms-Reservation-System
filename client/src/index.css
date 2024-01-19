@@ -57,16 +57,19 @@ h1 {
   font-size: 20px !important;
 }
  
-.btn{
-  margin-top: 10px;
-  font-size: 15px;
-  background-color: black;
-  box-shadow: none;
-  margin-right: 100px;
+h2 {
+  font-weight: 70;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 70px !important;
+}
+
+
+
+ 
 
   
 
-}
+
 
 .bs{
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -80,8 +83,16 @@ h1 {
   width: 100%;
   border-radius: 5px;
 }
-.btnbtn{
+.btn:hover{
+  background-color: #858585;
+  color: white;
+  box-shadow: none;
+}
+.btn-primary{
   float: right;
+  margin-bottom: 10px;
+  size: 15px;
+  background-color: #000000;
 }
 
 .navbar-nav{
@@ -124,5 +135,158 @@ h1 {
   height: 100vh;
   width: 100%;
   padding-top: 200px;
+
+
+}
+
+.ant-picker{
+box-shadow: none;
+width: 100%;
+}
+.ant-picker::placeholder{
+  width: 100%;
+  height: 50px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+
+
+}
+
+
+.ant-picker-input::placeholder{
+  color: #000000;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 5px;
+  padding: 10px;
+  box-shadow: none;
+  border-color: #000000;
+}
+
+.ant-picker-active-bar{
+  border: 1px solid #000000;
+
+}
+
+.col-md-4 {
+  padding: 10px;
+}
+
+.col-md-4 input{
+  width: 100%;
+  height: 42px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  padding: 10px;
+}
+
+.form-control{
+  width: 100%;
+  height: 50px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  padding: 10px;
+}
+
+.form-control:focus{
+  border: 1px solid #ffffff;
+  box-shadow: none;
+  border-color: #000000;
+}
+
+.form-control::placeholder{
+  color: #b1b1b1;
+  font-size: 14px;
+}
+
+
+.form-control{
+  width: 100%;
+  height: 42px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  padding: 10px;
+}
+
+.form-control option{
+  color: #dbdbdb;
+  font-size: 14px;
+}
+
+.form-control:focus{
+  border: 1px solid #ffffff;
+  box-shadow: none;
+  border-color: #000000;
+}
+
+.form-control::placeholder{
+  color: #b1b1b1;
+  font-size: 14px;
+  
+}
+
+.fa-search{
+  color: #ff0000;
+  font-size: 20px;
+  float: right;
+  margin: 10px;
+
+  
+}
+
+.col-md-5{
+  padding: 10px;
+}
+
+
+.col-md-5 input{
+  width: 100%;
+  height: 42px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  padding: 10px;
+}
+
+.col-md-5 img{
+  width: 100%;
+  height: 250px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  padding: 10px;
+
+}
+
+.col-md-7{
+  padding: 10px;
+  margin-top: 20px;
+  padding-left: 50px;
+}
+
+.btn1{
+  width: 150px;
+  height: 42px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  padding: 10px;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 15px;
+  float: right;
+}
+
+.btn-dark{
+  width: 150px;
+  height: 42px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+ 
 }
 
