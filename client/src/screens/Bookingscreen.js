@@ -85,24 +85,24 @@ const BookingScreen = ({ match }) => {
         </h1>
       ) : room ? (
         <div>
-          <div className="row justify-content-center mt-5 bs">
-            <div className="col-md-6">
-              <h1>{room.name}</h1>
-              <img src={room.imageurls[0]} className="bigimg" alt="Room" />
+          <div className="row justify-content-center mt-3 bs">
+            <div className="col-md-7">
+              <h1 class="h1">{room.name}</h1>
+              <img src={room.imageurls[0]} className="smallimg1" alt="Room" />
             </div>
             <div className="col-md-6">
-              <div style={{ textAlign: "right" }}>
+              <div style={{ textAlign: "left" }}>
                 <h1>Booking Details</h1>
                 <hr />
 
                 <b>
-                  <p>Name : </p>
+                  <p>Name :{room.name} </p>
                   <p>From Date : {params.fromdate}</p>
                   <p>To Date :{params.todate} </p>
                   <p>Max Count : {room.maxcount}</p>
                 </b>
               </div>
-              <div style={{ textAlign: "right" }}>
+              <div style={{ textAlign: "left" }}>
                 <h1>Amount</h1>
                 <hr />
 
@@ -118,7 +118,7 @@ const BookingScreen = ({ match }) => {
                   token={onToken}
                   stripeKey="pk_test_51OXkFEKKVI3hDMQU3VFizd8BbkI7U3NrvAYv52CX5O7sj0S8FeMcaupll4Nyf67wWCzZfg8GvGovEkiSPLhxJQp500IDRjdPFB"
                 >
-                  <button className="btn btn-primary">Pay Now</button>
+                  <button class="btn1">Pay Now</button>
                 </StripeCheckout>
               </div>
             </div>

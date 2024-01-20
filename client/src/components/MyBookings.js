@@ -12,7 +12,7 @@ import { Button, Divider, Radio, Space } from "antd";
 
 const { TabPane } = Tabs;
 
-function MyBookings() {
+function MyBookings(fromdate, todate) {
   const user = JSON.parse(localStorage.getItem("currentUser"));
   const [bookings, setBookings] = useState([]);
   const [cancelledBookings, setCancelledBookings] = useState([]);
@@ -94,12 +94,14 @@ function MyBookings() {
 
   return (
     <div>
-      <div className="row">
-        <Tabs defaultActiveKey="1" size="large">
+      <div style={{ align: "right" }} className="row ">
+        <Tabs defaultActiveKey="1" size="medium">
           <TabPane tab="Confirmed" key="1">
-            <div className="col-md-6">
+            <div style={{ alignContent: "center" }} className="col-md-6">
               {loading && <Loader />}
               {bookings &&
+                fromdate &&
+                todate &&
                 bookings.map((booking) => {
                   return (
                     <div className="bs">
@@ -137,7 +139,7 @@ function MyBookings() {
                         <Divider type="vertical" />
 
                         <button
-                          className="adelete1"
+                          className=" btn btn-danger "
                           onClick={() => {
                             Swal.fire({
                               title: "Are you sure?",
@@ -162,7 +164,7 @@ function MyBookings() {
                             });
                           }}
                         >
-                          CANCEL BOOKING
+                          Cancel Booking
                         </button>
                       </div>
                     </div>
