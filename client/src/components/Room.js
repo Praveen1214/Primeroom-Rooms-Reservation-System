@@ -26,35 +26,37 @@ function Room({ room, fromdate, todate }) {
         </b>
       </div>
 
-      <div class="btn-group">
+      <div className="btn-grp">
         {fromdate && todate && (
           <Link to={`/book/${room._id}/${fromdate || ""}/${todate || ""}`}>
-            <button className="btn btn-primary m-2 ">Book Now</button>
+            <button class="btn1" style={{ float: "right" }}>
+              Book Now
+            </button>
           </Link>
         )}
 
-        <button className=" btn btn-primary m-2 btn1" onClick={handleShow}>
+        <button class="btn2" style={{ float: "right" }} onClick={handleShow}>
           View Details
         </button>
       </div>
 
       <Modal show={show} onHide={handleClose} size="lg">
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>{room.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Carousel>
             {room.imageurls.map((url, index) => (
               <Carousel.Item key={index}>
-                <img className="d-block w-100 bigimg" src={url} alt="" />
+                <img className="d-block w-100 smallimg" src={url} alt="" />
               </Carousel.Item>
             ))}
           </Carousel>
-          <p>{room.description}</p>
+          <p class="ptext">{room.description}</p>
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button class="close-btn" variant="secondary" onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>
