@@ -18,8 +18,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "nodemon server.js",
-    "start": "node ./www.js",
-    "build": "grunt dist",
+    "start": "node server.js",
+   "build": "grunt dist",
     "postinstall": "./node_modules/bower/bin/bower install && npm run build"
 
   },
