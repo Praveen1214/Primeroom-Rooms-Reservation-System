@@ -8,7 +8,9 @@
     "react-router-dom": "^6.21.1",
     "router": "^1.3.8",
     "stripe": "^14.12.0",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "bower":"^1.8.0",
+    "grunt":"^1.0.1"
   },
   "name": "primeroom",
   "version": "1.0.0",
@@ -16,8 +18,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "nodemon server.js",
-    "start": "concurrently \"cd client && npm start\" \"nodemon server.js\""
+    "start": "node ./www.js",
+    "build": "grunt dist",
+    "postinstall": "./node_modules/bower/bin/bower install && npm run build"
+
   },
+  
   "author": "",
   "license": "ISC",
   "description": ""
