@@ -34,6 +34,11 @@
       "react-app/jest"
     ]
   },
+  "engines": {
+    "node": "14.x", 
+    "npm": "6.x"     
+  },
+  
   "browserslist": {
     "production": [
       ">0.2%",
@@ -46,6 +51,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000"
   
+  "proxy": "http://localhost:5000"
 }
