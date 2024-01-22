@@ -1,15 +1,11 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
+mongoose.set("strictQuery", true);
 
-var mongoURL =
-  "mongodb+srv://dileepapraveen32:eeDP1214.@praveen.jndze1l.mongodb.net/primerooms";
+var mongoURL = process.env.MONGODB_URL;
 
-mongoose.connect(process.env.MONGODB_URI || mongoURL, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-});
-
+mongoose.connect(process.env.MONGODB_URI || mongoURL);
 var connection = mongoose.connection;
 
 connection.on("error", () => {
