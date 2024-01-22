@@ -17,10 +17,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon server.js",
-    "start": "node ./www.js",
-    "build": "grunt dist",
-    "postinstall": "./node_modules/bower/bin/bower install && npm run build"
+    "build":"cd client && npm install",
+    "build2":"cd client && npm install react-scripts",
+    "install-client":"cd client && npm run build",
+    "heroku-postbuild":"npm run build2 && npm run install-client && npm run build",
+    "start" : "node server.js",
+    "client" : "cd client && npm start"
 
   },
   
