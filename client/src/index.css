@@ -344,7 +344,11 @@ width: 100%;
   border: 1px solid #555555;
 }
 
-
+.name{
+  font-size: 120px;
+  font-weight: 700;
+  color: #ffffff;
+}
 
 .btn-danger{
   
