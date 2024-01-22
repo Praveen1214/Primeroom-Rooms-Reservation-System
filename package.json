@@ -9,6 +9,7 @@
     "build":"cd client && npm install --legacy-peer-deps",
     "build2":"cd client && npm install react-scripts",
     "install-client":"cd client && npm run build",
+    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false",
     "heroku-postbuild":"npm run build2 && npm run install-client && npm run build",
     "start" : "node server.js",
     "client" : "cd client && npm start"
