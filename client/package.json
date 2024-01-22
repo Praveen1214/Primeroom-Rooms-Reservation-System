@@ -9,15 +9,16 @@
     "antd": "^5.12.8",
     "aos": "^2.3.4",
     "axios": "^1.6.2",
+    "jspdf": "^2.5.1",
     "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.2",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "^3.0.1",
     "react-spinners": "^0.13.8",
     "react-stripe-checkout": "^2.6.3",
-    "sweetalert2": "^11.10.2",
+    "sweetalert2": "^11.6.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -32,8 +33,6 @@
       "react-app/jest"
     ]
   },
- 
-
   "browserslist": {
     "production": [
       ">0.2%",
@@ -46,5 +45,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
 }
