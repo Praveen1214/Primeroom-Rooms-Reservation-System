@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+
 import "./registerform.css";
 import axios from "axios";
 import Loader from "../components/Loader";
