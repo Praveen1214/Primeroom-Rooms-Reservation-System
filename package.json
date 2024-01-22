@@ -24,6 +24,10 @@
     "stripe": "^14.13.0",
     "uuid": "^9.0.1"
   },
+  "engines": {
+    "node": "20.10.0"
+  },
+  
  
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
