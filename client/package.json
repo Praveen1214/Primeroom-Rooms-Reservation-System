@@ -3,30 +3,35 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
     "antd": "^5.12.8",
-    "aos": "^2.3.4",
+    "aos": "^3.0.0-beta.6",
     "axios": "^1.6.2",
-    "jspdf": "^2.4.0",
+    "bootstrap": "^4.0.0",
+    "joi": "^17.11.0",
+    "jspdf": "^2.5.1",
     "moment": "^2.30.1",
+    "mongoose": "^8.0.3",
     "qrcode": "^1.5.3",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.9.2",
+    "react-bootstrap": "^1.5.2",
+    "react-bootstrap-validation": "^0.1.11",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.1",
+    "react-router-dom": "^6.21.0",
     "react-scripts": "^5.0.1",
     "react-spinners": "^0.13.8",
     "react-stripe-checkout": "^2.6.3",
-    "sweetalert2": "^11.6.13",
-    "web-vitals": "^2.1.4"
+    "sweetalert2": "^11.10.3",
+    "web-vitals": "^3.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve": "nodemon server.js"
   },
   "eslintConfig": {
     "extends": [
@@ -45,10 +50,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "nodemon": "^3.0.2"
   },
   "proxy": "http://localhost:5000"
 }

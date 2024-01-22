@@ -1,37 +1,31 @@
 {
-  "name": "primeroom",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"cd client && npm start\" \"nodemon server.js\"",
-    "build": "cd client && npm install",
-    "build2": "cd client && npm install react-scripts",
-    "install-client": "cd client && npm run build",
-    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; npm run build2 && npm run build --only=dev",
-    "heroku-postbuild": "npm run build2 && npm run install-client && npm run build",
-    "start": "node server.js"
-  },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@stripe/stripe-js": "^2.2.2",
     "concurrently": "^8.2.2",
-    "dotenv": "^16.3.2",
     "express": "^4.18.2",
     "moment": "^2.30.1",
     "mongoose": "^8.0.3",
-    "qrcode": "^1.5.3",
+    "nodemon": "^3.0.2",
+    "react-router-dom": "^6.21.1",
     "router": "^1.3.8",
-    "stripe": "^14.13.0",
-    "uuid": "^9.0.1"
+    "stripe": "^14.12.0",
+    "uuid": "^9.0.1",
+    "bower":"^1.8.0",
+    "grunt":"^1.0.1"
   },
-  "engines": {
-    "node": "20.10.0"
+  "name": "primeroom",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js",
+    "start": "node ./www.js",
+    "build": "grunt dist",
+    "postinstall": "./node_modules/bower/bin/bower install && npm run build"
+
   },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "nodemon": "^3.0.2"
-  }
+  
+  "author": "",
+  "license": "ISC",
+  "description": ""
+ 
 }

@@ -213,10 +213,14 @@ function MyProfile() {
           </h1>
 
           <div className="button-container">
-            <button className="btn2 m-3 " onClick={showModal}>
+            <button clas="btn1" className="btn2 m-3 " onClick={showModal}>
               Edit Details
             </button>
-            <button className="btn2 " onClick={showChangePassModal}>
+            <button
+              className="btn2 m-3 "
+              class="btn2 "
+              onClick={showChangePassModal}
+            >
               Change Password
             </button>
 
@@ -321,7 +325,7 @@ function MyProfile() {
                     span: 16,
                   }}
                 >
-                  <button className="adelete2" type="primary" onClick={onReset}>
+                  <button className="btn1" type="primary" onClick={onReset}>
                     Reset
                   </button>
                 </Form.Item>

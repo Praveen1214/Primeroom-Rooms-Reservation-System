@@ -10,9 +10,13 @@ function Landingscreen() {
   return (
     <div className="row landing">
       <div className="col-md-12 text-center mt-100">
-        <h1 class="name" data-aos="zoom-in" data-aos-duration="2000">
+        <h2
+          data-aos="zoom-in"
+          data-aos-duration="2000"
+          style={{ color: "white", fontSize: "80px", fontWeight: "bold" }}
+        >
           PrimeRooms
-        </h1>
+        </h2>
         <h3
           data-aos="zoom-out"
           data-aos-duration="2000"
