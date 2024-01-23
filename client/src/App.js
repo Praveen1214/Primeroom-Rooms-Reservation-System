@@ -17,6 +17,7 @@ function App() {
       <Navbar />
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Landingscreen />} />
           <Route path="/home" element={<Homescreen />} />
           <Route
             path="/book/:roomid/:fromdate/:todate"
@@ -26,7 +27,6 @@ function App() {
           <Route path="/login" element={<Loginscreen />} />
           <Route path="/profile" element={<Profilescreen />} />
           <Route path="/admin" element={<Adminscreen />} />
-          <Route path="/" element={<Landingscreen />} />
         </Routes>
       </BrowserRouter>
     </div>

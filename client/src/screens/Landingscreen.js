@@ -8,8 +8,15 @@ AOS.init();
 
 function Landingscreen() {
   return (
-    <div className="row landing">
-      <div className="col-md-12 text-center mt-100">
+    <div
+      style={{
+        backgroundImage: "url(/images/landing.jpg)",
+      }}
+      className="row landing "
+      data-aos="zoom-out"
+      data-aos-duration="1100"
+    >
+      <div className="col-md-13 text-center mt-100">
         <h2
           data-aos="zoom-in"
           data-aos-duration="2000"

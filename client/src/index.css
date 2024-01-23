@@ -64,9 +64,18 @@ h1 {
 }
  
 h2 {
+  font-weight: 90;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 80px !important;
+  padding: 10px 0 10px 0 !important;
+}
+
+h3 {
   font-weight: 70;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 40px !important;
+  padding: 10px 0 10px 0 !important;
+  color: #dddddd;
 }
 
 
