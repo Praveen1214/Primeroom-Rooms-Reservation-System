@@ -49,6 +49,7 @@ function Loginscreen() {
         const userData = response.data;
 
         localStorage.setItem("currentUser", JSON.stringify(userData));
+        window.location.reload();
 
         // Redirect to the home page
         navigate("/home");
