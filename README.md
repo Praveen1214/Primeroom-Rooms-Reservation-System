@@ -1,5 +1,6 @@
 
 # Prime - Rooms Reservation System
+<p align="left"> <img src="https://i.postimg.cc/gJdWvngW/Capture.png" /> </p>
 This project is a MERN (MongoDB, Express.js, React.js, Node.js) stack project. MERN stack is a popular technology stack for building web applications, it uses MongoDB as a database, Express.js as a web framework, React.js as a front-end library, and Node.js as a back-end runtime environment.
 
 The project is a room reservation system, which allows customers to search for and book rooms, and sellers to manage their inventory and promote their rooms. The project includes several create functions such as Register, Book Now, Add rooms, seller Register, Blog create by seller, feedback create and Service create by seller, which allows customers and sellers to interact with the system.
